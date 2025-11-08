@@ -1,0 +1,332 @@
+/* ============================================
+   PROFILE - Page de profil utilisateur
+   ============================================ */
+
+.profile-container {
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+.profile-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.profile-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.profile-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Profile sections */
+.profile-section {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profile-section-header {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-primary);
+}
+
+.profile-section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.profile-section-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Profile info display */
+.profile-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.profile-info-item {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+}
+
+.profile-info-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.profile-info-value {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    word-break: break-word;
+}
+
+/* Profile actions */
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-primary);
+}
+
+.profile-actions .btn {
+    flex: 1;
+}
+
+/* Password update */
+.password-requirements {
+    background-color: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.password-requirements-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--blue);
+    margin-bottom: 0.75rem;
+}
+
+.password-requirements-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.password-requirements-list li {
+    font-size: 0.8125rem;
+    color: #93c5fd;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.password-requirements-list li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--blue);
+}
+
+.password-requirements-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Two-factor authentication */
+.two-factor-status {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    margin-bottom: 1.5rem;
+}
+
+.two-factor-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.two-factor-icon.enabled {
+    background-color: var(--success-bg);
+    color: var(--success);
+}
+
+.two-factor-icon.disabled {
+    background-color: var(--warning-bg);
+    color: var(--warning);
+}
+
+.two-factor-content {
+    flex: 1;
+}
+
+.two-factor-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+}
+
+.two-factor-description {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* Delete account section */
+.delete-account-section {
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+}
+
+.delete-account-warning {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.delete-account-icon {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background-color: rgba(239, 68, 68, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--error);
+}
+
+.delete-account-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--error);
+    margin-bottom: 0.5rem;
+}
+
+.delete-account-content p {
+    font-size: 0.875rem;
+    color: #fca5a5;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.delete-account-consequences {
+    background-color: rgba(239, 68, 68, 0.15);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.delete-account-consequences-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--error);
+    margin-bottom: 0.75rem;
+}
+
+.delete-account-consequences-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.delete-account-consequences-list li {
+    font-size: 0.8125rem;
+    color: #fca5a5;
+    margin-bottom: 0.5rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.delete-account-consequences-list li::before {
+    content: '✗';
+    position: absolute;
+    left: 0;
+    color: var(--error);
+    font-weight: 700;
+}
+
+.delete-account-consequences-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* Avatar section */
+.avatar-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.avatar-display {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-primary);
+    font-size: 2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.avatar-actions {
+    flex: 1;
+}
+
+.avatar-actions p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.avatar-buttons {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-container {
+        margin: 1rem auto;
+    }
+    
+    .profile-section {
+        padding: 1.5rem;
+    }
+    
+    .profile-info-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-actions {
+        flex-direction: column;
+    }
+    
+    .avatar-section {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .avatar-buttons {
+        flex-direction: column;
+    }
+}

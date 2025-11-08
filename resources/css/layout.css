@@ -1,0 +1,308 @@
+/* ============================================
+   LAYOUT - Navigation et structure
+   ============================================ */
+
+/* Navigation principale */
+.navbar {
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid rgba(45, 55, 72, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.navbar-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 4rem;
+}
+
+/* Logo */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+}
+
+.navbar-logo-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bg-primary);
+    font-weight: 700;
+    font-size: 1.25rem;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.navbar-logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Navigation links */
+.navbar-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link {
+    padding: 0.5rem 1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.875rem;
+    border-radius: var(--radius-lg);
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+    background-color: rgba(55, 65, 81, 0.5);
+}
+
+.nav-link.active {
+    color: var(--text-primary);
+    background-color: var(--bg-tertiary);
+}
+
+/* Boutons navigation */
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* User dropdown */
+.user-dropdown {
+    position: relative;
+}
+
+.user-dropdown-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    color: var(--text-primary);
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.user-dropdown-button:hover {
+    border-color: var(--border-hover);
+    background-color: var(--bg-hover);
+}
+
+.user-dropdown-menu {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    min-width: 12rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    padding: 0.5rem;
+    display: none;
+}
+
+.user-dropdown.open .user-dropdown-menu {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    text-align: left;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    color: var(--text-primary);
+    background-color: var(--bg-hover);
+}
+
+.dropdown-item.danger:hover {
+    color: var(--error);
+    background-color: var(--error-bg);
+}
+
+/* Menu mobile */
+.mobile-menu-button {
+    display: none;
+    padding: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    border-radius: var(--radius-md);
+}
+
+.mobile-menu-button:hover {
+    color: var(--text-primary);
+    background-color: rgba(55, 65, 81, 0.5);
+}
+
+.mobile-menu {
+    display: none;
+    border-top: 1px solid rgba(45, 55, 72, 0.5);
+    background-color: var(--bg-secondary);
+    padding: 1rem 0;
+}
+
+.mobile-menu.open {
+    display: block;
+}
+
+.mobile-menu .nav-link {
+    display: block;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    margin: 0.25rem 0;
+}
+
+.mobile-menu-divider {
+    height: 1px;
+    background-color: var(--border-primary);
+    margin: 0.5rem 0;
+}
+
+/* Main content */
+main {
+    padding-bottom: 3rem;
+}
+
+/* Footer */
+.footer {
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-primary);
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+}
+
+.footer-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-text {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.footer-link {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: var(--text-primary);
+}
+
+/* Flash messages */
+.flash-container {
+    max-width: 1280px;
+    margin: 1rem auto;
+    padding: 0 1rem;
+}
+
+.flash-message {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: var(--radius-xl);
+    border: 1px solid;
+    backdrop-filter: blur(10px);
+}
+
+.flash-icon {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.flash-content {
+    flex: 1;
+    font-size: 0.875rem;
+}
+
+.flash-close {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    color: inherit;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.flash-close:hover {
+    opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .navbar-nav {
+        display: none;
+    }
+    
+    .mobile-menu-button {
+        display: block;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

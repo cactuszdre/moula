@@ -1,0 +1,255 @@
+/* ============================================
+   WALLETS EDIT - Modification du wallet
+   ============================================ */
+
+.edit-wallet-container {
+    max-width: 600px;
+    margin: 2rem auto;
+}
+
+.edit-wallet-header {
+    margin-bottom: 2rem;
+}
+
+.edit-wallet-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.edit-wallet-subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.edit-wallet-form {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+}
+
+/* Current wallet info */
+.current-wallet-info {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-primary);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.current-wallet-info-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+}
+
+.wallet-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border-primary);
+}
+
+.wallet-info-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.wallet-info-row:first-child {
+    padding-top: 0;
+}
+
+.wallet-info-row-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.wallet-info-row-value {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-family: var(--font-mono);
+}
+
+/* Form fields */
+.edit-form-section {
+    margin-bottom: 2rem;
+}
+
+.edit-form-section:last-child {
+    margin-bottom: 0;
+}
+
+.character-count {
+    display: block;
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+}
+
+/* Danger zone */
+.danger-zone {
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-border);
+    border-radius: var(--radius-xl);
+    padding: 1.5rem;
+    margin-top: 2rem;
+}
+
+.danger-zone-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.danger-zone-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: var(--error);
+}
+
+.danger-zone-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--error);
+    margin: 0;
+}
+
+.danger-zone-description {
+    font-size: 0.875rem;
+    color: #fca5a5;
+    margin-bottom: 1rem;
+}
+
+.danger-zone-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+/* Delete confirmation modal */
+.delete-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(10, 14, 23, 0.9);
+    backdrop-filter: blur(5px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+}
+
+.delete-modal-content {
+    background-color: var(--bg-card);
+    border: 1px solid var(--error-border);
+    border-radius: var(--radius-xl);
+    padding: 2rem;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: var(--shadow-xl);
+}
+
+.delete-modal-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.delete-modal-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--error-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--error);
+}
+
+.delete-modal-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.delete-modal-description {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.delete-modal-warning {
+    background-color: var(--warning-bg);
+    border: 1px solid var(--warning-border);
+    border-radius: var(--radius-md);
+    padding: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.delete-modal-warning-text {
+    font-size: 0.8125rem;
+    color: #fcd34d;
+    margin: 0;
+}
+
+.delete-modal-actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.delete-modal-actions .btn {
+    flex: 1;
+}
+
+/* Form actions */
+.edit-form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-primary);
+}
+
+.edit-form-actions .btn {
+    flex: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .edit-wallet-container {
+        margin: 1rem auto;
+    }
+    
+    .edit-wallet-form {
+        padding: 1.5rem;
+    }
+    
+    .edit-form-actions {
+        flex-direction: column;
+    }
+    
+    .danger-zone-actions {
+        flex-direction: column;
+    }
+    
+    .wallet-info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+}

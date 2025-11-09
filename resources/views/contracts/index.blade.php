@@ -2,9 +2,9 @@
 
 @section('title', 'Mes Contrats')
 
-@section('styles')
+@push('styles')
     @vite(['resources/css/contracts-index.css'])
-@endsection
+@endpush
 
 @section('content')
 <div class="contracts-page">

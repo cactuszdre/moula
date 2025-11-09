@@ -80,9 +80,17 @@ class ContractService
     public function fetchAbiFromExplorer(string $address, string $chain = 'base'): ?array
     {
         try {
+            // Utiliser Routescan pour Base et Base Sepolia
+            if ($chain === 'base') {
+                return $this->fetchFromRoutescan($address, 8453);
+            }
+            
+            if ($chain === 'baseSepolia') {
+                return $this->fetchFromRoutescan($address, 84532);
+            }
+
+            // Utiliser Etherscan pour Ethereum et Sepolia
             $apiUrls = [
-                'base' => 'https://api.basescan.org/api',
-                'baseSepolia' => 'https://api-sepolia.basescan.org/api',
                 'ethereum' => 'https://api.etherscan.io/api',
                 'sepolia' => 'https://api-sepolia.etherscan.io/api',
             ];
@@ -91,9 +99,9 @@ class ContractService
                 return null;
             }
 
-            $apiKey = config("services.{$chain}_scan_api_key", '');
+            $apiKey = config('services.etherscan.api_key', '');
             
-            $response = Http::get($apiUrls[$chain], [
+            $response = Http::timeout(30)->get($apiUrls[$chain], [
                 'module' => 'contract',
                 'action' => 'getabi',
                 'address' => $address,
@@ -119,14 +127,76 @@ class ContractService
     }
 
     /**
+     * Récupérer l'ABI depuis Routescan (pour Base et Base Sepolia)
+     */
+    private function fetchFromRoutescan(string $address, int $chainId): ?array
+    {
+        try {
+            $url = "https://api.routescan.io/v2/network/mainnet/evm/{$chainId}/etherscan/api";
+            
+            $response = Http::timeout(30)->get($url, [
+                'module' => 'contract',
+                'action' => 'getabi',
+                'address' => $address,
+            ]);
+
+            if (!$response->successful()) {
+                Log::warning("Erreur HTTP Routescan", [
+                    'status' => $response->status(),
+                    'chainId' => $chainId,
+                    'address' => $address,
+                ]);
+                return null;
+            }
+
+            $data = $response->json();
+
+            if (!isset($data['status']) || $data['status'] !== '1') {
+                Log::info("Contrat non vérifié sur Routescan", [
+                    'address' => $address,
+                    'chainId' => $chainId,
+                    'message' => $data['message'] ?? 'Unknown error'
+                ]);
+                return null;
+            }
+
+            $abi = json_decode($data['result'], true);
+            
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                Log::error("Erreur de décodage JSON de l'ABI", [
+                    'error' => json_last_error_msg()
+                ]);
+                return null;
+            }
+
+            return $abi;
+        } catch (\Exception $e) {
+            Log::error("Exception lors de la récupération depuis Routescan", [
+                'address' => $address,
+                'chainId' => $chainId,
+                'error' => $e->getMessage()
+            ]);
+            return null;
+        }
+    }
+
+    /**
      * Vérifier si un contrat est vérifié sur l'explorateur
      */
     public function isContractVerified(string $address, string $chain = 'base'): bool
     {
         try {
+            // Utiliser Routescan pour Base et Base Sepolia
+            if ($chain === 'base') {
+                return $this->isVerifiedOnRoutescan($address, 8453);
+            }
+            
+            if ($chain === 'baseSepolia') {
+                return $this->isVerifiedOnRoutescan($address, 84532);
+            }
+
+            // Utiliser Etherscan pour Ethereum et Sepolia
             $apiUrls = [
-                'base' => 'https://api.basescan.org/api',
-                'baseSepolia' => 'https://api-sepolia.basescan.org/api',
                 'ethereum' => 'https://api.etherscan.io/api',
                 'sepolia' => 'https://api-sepolia.etherscan.io/api',
             ];
@@ -135,9 +205,9 @@ class ContractService
                 return false;
             }
 
-            $apiKey = config("services.{$chain}_scan_api_key", '');
+            $apiKey = config('services.etherscan.api_key', '');
             
-            $response = Http::get($apiUrls[$chain], [
+            $response = Http::timeout(30)->get($apiUrls[$chain], [
                 'module' => 'contract',
                 'action' => 'getabi',
                 'address' => $address,
@@ -156,6 +226,31 @@ class ContractService
                 'chain' => $chain,
                 'error' => $e->getMessage(),
             ]);
+            return false;
+        }
+    }
+
+    /**
+     * Vérifier si un contrat est vérifié sur Routescan
+     */
+    private function isVerifiedOnRoutescan(string $address, int $chainId): bool
+    {
+        try {
+            $url = "https://api.routescan.io/v2/network/mainnet/evm/{$chainId}/etherscan/api";
+            
+            $response = Http::timeout(30)->get($url, [
+                'module' => 'contract',
+                'action' => 'getabi',
+                'address' => $address,
+            ]);
+
+            if ($response->successful()) {
+                $data = $response->json();
+                return isset($data['status']) && $data['status'] === '1';
+            }
+
+            return false;
+        } catch (\Exception $e) {
             return false;
         }
     }

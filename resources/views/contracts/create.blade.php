@@ -2,9 +2,9 @@
 
 @section('title', 'Ajouter un Contrat')
 
-@section('styles')
+@push('styles')
     @vite(['resources/css/contracts-create.css'])
-@endsection
+@endpush
 
 @section('content')
 <div class="create-contract-page">
